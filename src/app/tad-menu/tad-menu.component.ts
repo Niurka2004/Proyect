@@ -17,6 +17,10 @@ import { NavController } from '@ionic/angular';
       this.navCtrl.navigateRoot('/lista');
     }
 
+    pagePokemon(){
+      this.navCtrl.navigateBack('/pokemon')
+    }
+
     ngOnInit() {}
 
   }

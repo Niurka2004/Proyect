@@ -18,6 +18,8 @@ export class ListaPage implements OnInit {
                 this.getItem();
               }
 
+  ngOnInit() {}
+
   setItem(){
     // this.storage.set('task', JSON.stringify(this.todos));
     localStorage.setItem('task',JSON.stringify(this.todos))
@@ -72,8 +74,4 @@ export class ListaPage implements OnInit {
     });
     toast.present();
   }
-
-  ngOnInit() {
-  }
-
 }

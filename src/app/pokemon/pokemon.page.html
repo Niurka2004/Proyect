@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Lista de Pokemon</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">pokemon</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label color="danger">Name</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let pokemon of pokemonList; let i = index">
+      {{ pokemon.name }}
+    </ion-item>
+  </ion-list>
+
+</ion-content>

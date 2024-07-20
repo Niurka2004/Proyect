@@ -23,8 +23,8 @@
       </ion-label>
       <ion-checkbox slot="start" [(ngModel)]="todo.completed" (ionChange)="toggleComplete(i)"></ion-checkbox>
       <ion-button color="warning" (click)="editTask(i)">Editar</ion-button>
+      <!-- colocar modal para editar -->
       <ion-button color="danger" (click)="removeTask(i)">Eliminar</ion-button>
     </ion-item>
   </ion-list>
-
 </ion-content>
