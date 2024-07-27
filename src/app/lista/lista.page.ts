@@ -15,34 +15,16 @@ export class ListaPage implements OnInit {
               private storage: Storage)
               {
                 this.storage.create();
-                this.getItem();
               }
 
-  ngOnInit() {}
-
-  setItem(){
-    // this.storage.set('task', JSON.stringify(this.todos));
-    localStorage.setItem('task',JSON.stringify(this.todos))
-  }
-
-  getItem(){
-    // var task = this.storage.get('task')
-    // console.log("la tarea es:" + task);
-
-    var proyect = localStorage.getItem('task')
-
-    if (proyect == null) return;
-
-    this.todos = JSON.parse(proyect);
-    console.log(proyect)
+  ngOnInit() {
+    this.loadTask();
   }
 
   async addToDo() {
     if (this.newTodo.trim().length > 0) {
       this.todos.push({ task: this.newTodo, completed: false });
       this.newTodo = '';
-      this.setItem();
-      this.getItem();
     } else {
       const toast = await this.toastController.create({
         color: 'danger',
@@ -59,12 +41,14 @@ export class ListaPage implements OnInit {
   }
 
   editTask(index: number){
-
+    const updateTodo = prompt('Editar la tarea:',this.todos[index].task);
+    if(updateTodo !== null)
+      this.todos[index].task = updateTodo;
+    this.save();
   }
 
   async removeTask(index: number) {
     this.todos.splice(index, 1);
-    localStorage.removeItem('task');
     const toast = await this.toastController.create({
       color: 'success',
       message: '¡Tarea Eliminada!',
@@ -73,5 +57,17 @@ export class ListaPage implements OnInit {
       icon: 'trash'
     });
     toast.present();
+    this.save();
   }
+
+  private save(){
+    localStorage.setItem('todos','1'),JSON.stringify(this.todos)
+  }
+
+  private loadTask(){
+    const storedTask = localStorage.getItem('todos');
+    if(storedTask)
+      this.todos = JSON.parse(storedTask);
+  }
+
 }
