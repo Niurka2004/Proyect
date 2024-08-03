@@ -1,26 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
   @Component({
     selector: 'app-tad-menu',
     templateUrl: './tad-menu.component.html',
     styleUrls: ['./tad-menu.component.scss'],
   })
-  export class TadMenuComponent  implements OnInit {
-
-    constructor(private navCtrl: NavController) {}
-
-    pageHome(){
-      this.navCtrl.navigateRoot('/home');
+  export class TadMenuComponent {
+    constructor(private menu: MenuController) {}
+  
+    closeMenu() {
+      this.menu.close();
     }
-    pageList(){
-      this.navCtrl.navigateRoot('/lista');
-    }
-
-    pagePokemon(){
-      this.navCtrl.navigateBack('/pokemon')
-    }
-
-    ngOnInit() {}
-
   }
