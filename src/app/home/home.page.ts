@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { PokemonService } from '../pokemon.service';
+import { ApiFoodService } from '../services/api-food.service';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +14,11 @@ export class HomePage implements OnInit {
 
   pokemonList: any[] = [];
   rickAndMorty: any[] = [];
-
+  liquorlist : any[] = [];
   constructor(
     private storage: Storage,
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private liquorService: ApiFoodService
   ) {
     this.storage.create();
     this.getItem();
@@ -31,6 +33,11 @@ export class HomePage implements OnInit {
     this.pokemonService.getRickandMorty().subscribe((data) => {
       this.rickAndMorty = data.results;
       console.log('RICK AND MORTY: ', this.rickAndMorty);
+    });
+
+    this.liquorService.getComidaList().subscribe((data) => {
+      this.liquorlist = data.drinks;
+      console.log('LICORRRR: ', this.liquorlist);
     });
   }
 

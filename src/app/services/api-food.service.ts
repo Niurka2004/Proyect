@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiFoodService {
-  private apiUrl='www.themealdb.com/api/json/v1/1/categories.php';
+  private apiUrl='https://www.thecocktaildb.com/api/json/v1/1/random.php';
 
   constructor(private http: HttpClient) {}
    getComidaList(): Observable<any>{
