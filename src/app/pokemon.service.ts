@@ -1,22 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PokemonService {
+  private apiUrl = 'https://pokeapi.co/api/v2/';
+  private rickUrl = 'https://rickandmortyapi.com/api/';
 
-  private apiUrl = "https://pokeapi.co/api/v2/"
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  getPokemonLists(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'pokemon');
+  }
 
-  getPokemonList(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + 'pokemon').pipe(
-      catchError((error => {
-        console.error('Error fetching Pokemondata',error);
-        return throwError(error);
-      }))
-    );
+  getRickandMorty(): Observable<any> {
+    return this.http.get<any>(this.rickUrl + 'character');
   }
 }

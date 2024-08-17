@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TadMenuComponent } from './tad-menu.component';
+import { ComidaComponent } from './comida.component';
 
-describe('TadMenuComponent', () => {
-  let component: TadMenuComponent;
-  let fixture: ComponentFixture<TadMenuComponent>;
+describe('ComidaComponent', () => {
+  let component: ComidaComponent;
+  let fixture: ComponentFixture<ComidaComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TadMenuComponent ],
+      declarations: [ ComidaComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TadMenuComponent);
+    fixture = TestBed.createComponent(ComidaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
